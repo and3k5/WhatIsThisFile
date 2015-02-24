@@ -14,15 +14,31 @@ window.addEventListener("load",function () {
 		e.preventDefault();
 		var file = e.dataTransfer.files[0];
 		if (file != undefined) {
-			console.log(file);
+			console.log("Loaded file");
 			var reader = new FileReader();
 			reader.onload = function (event) {
-				console.log(event.target.result);
+				IdentifyFile(event.target.result);
 			}
-			reader.readAsDataURL(file);
+			reader.readAsArrayBuffer(file);
 		} else {
 			console.error("Failed");
 		}
 		return false;
 	}
+	var http = new XMLHttpRequest(),FILETYPES;
+	http.open("GET","filetypes.xml",true)
+	http.onloadend = function (e) {
+		console.log("DOWNLOADED");
+		FILETYPES=this.responseXML.getElementsByTagName("filetypes")[0].getElementsByTagName("file");
+	};
+	http.send();
+	
+	function IdentifyFile(arrayBuffer) {
+		var array=FILETYPES;
+		for (var i=0,len=array.length;i<len;i++) {
+			console.log(array[i]);
+		}
+	}
+	
 });
+

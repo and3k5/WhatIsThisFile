@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filetypes>
+	<file name="JPEG image">
+		<ext>jpeg</ext>
+		<ext>jpg</ext>
+		<mime>image/jpeg</mime>
+		<data>
+			<byte>
+				<pos>0</pos>
+				<value>FFD8FFE</value>
+			</byte>
+		</data>
+	</file>
+	<file name="PNG image">
+		<ext>png</ext>
+		<mime>image/png</mime>
+		<data>
+			<byte>
+				<pos>0</pos>
+				<value>89504E470D0A1A0A</value>
+			</byte>
+		</data>
+	</file>
+</filetypes>
