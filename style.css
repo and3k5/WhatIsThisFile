@@ -1,0 +1,28 @@
+body {
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#droparea.drophover {
+	background-color:#eeeeee;
+	border-color:#ddddFF;
+	transition: background-color 0.5s;
+}
+#droparea {
+	border:solid 2px;
+	border-color:#dddddd;
+	background-color:#dddddd;
+	padding:5px;
+	text-align:center;
+	border-radius:10px;
+	margin-left: auto;
+	margin-right: auto;
+	width:300px;
+	height:300px;
+}
+#container {
+	padding-top:50px;
+	max-width:700px;
+	min-height:600px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
