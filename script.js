@@ -29,14 +29,17 @@ window.addEventListener("load",function () {
 	http.open("GET","filetypes.xml",true)
 	http.onloadend = function (e) {
 		console.log("DOWNLOADED");
-		FILETYPES=this.responseXML.getElementsByTagName("filetypes")[0].getElementsByTagName("file");
+		FILETYPES=this.responseXML.querySelectorAll("filetypes")[0].querySelectorAll("file");
 	};
 	http.send();
 	
 	function IdentifyFile(arrayBuffer) {
 		var array=FILETYPES;
 		for (var i=0,len=array.length;i<len;i++) {
-			console.log(array[i]);
+			var array2=array[i].querySelectorAll("data")[0].querySelectorAll("byte");
+			for (var j=0,len2=array2.length;j<len2;j++) {
+				console.log(array2[i]);
+			}
 		}
 	}
 	

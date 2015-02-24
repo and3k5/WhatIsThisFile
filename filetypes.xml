@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <filetypes>
-	<file name="JPEG image">
-		<ext>jpeg</ext>
-		<ext>jpg</ext>
+	<file>
+		<name>MP3 Audio</name>
+		<ext>.mp3</ext>
+		<mime>audio/mpeg</mime>
+		<data>
+			<byte>
+				<pos>0</pos>
+				<value>494433</value>
+				<desc>ID3v2.x</desc>
+			</byte>
+		</data>
+	</file>
+	<file>
+		<name>JPEG Image</name>
+		<ext>.jpeg</ext>
+		<ext>.jpg</ext>
 		<mime>image/jpeg</mime>
 		<data>
 			<byte>
@@ -11,8 +24,9 @@
 			</byte>
 		</data>
 	</file>
-	<file name="PNG image">
-		<ext>png</ext>
+	<file>
+		<name>PNG Image</name>
+		<ext>.png</ext>
 		<mime>image/png</mime>
 		<data>
 			<byte>
