@@ -33,15 +33,39 @@ window.addEventListener("load",function () {
 	};
 	http.send();
 	
+	function getText(DOM) {
+		if (DOM!=null) {
+			if (DOM instanceof NodeList) {
+				var str="",l="";
+				for (var i=0,len=DOM.length;i<len;i++) {
+					str+=l+DOM[i].textContent;
+					l=", ";
+				}
+				return str;
+			}else{
+				return DOM.textContent;
+			}
+		}else{
+			return "";
+		}
+	}
+	
+	function FetchFileInfo(DOM) {
+		var name = getText(DOM.querySelectorAll("name"));
+		return {name:name};
+	}
+	
 	function IdentifyFile(arrayBuffer) {
 		var array=FILETYPES;
+		var ui8 = new Uint8Array(arrayBuffer);
 		for (var i=0,len=array.length;i<len;i++) {
+			var obj=FetchFileInfo(array[i]);
+			console.log(obj);
 			var array2=array[i].querySelectorAll("data")[0].querySelectorAll("byte");
 			for (var j=0,len2=array2.length;j<len2;j++) {
 				console.log(array2[j]);
 			}
 		}
 	}
-	
 });
 
