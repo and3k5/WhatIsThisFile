@@ -38,7 +38,7 @@ window.addEventListener("load",function () {
 		for (var i=0,len=array.length;i<len;i++) {
 			var array2=array[i].querySelectorAll("data")[0].querySelectorAll("byte");
 			for (var j=0,len2=array2.length;j<len2;j++) {
-				console.log(array2[i]);
+				console.log(array2[j]);
 			}
 		}
 	}
