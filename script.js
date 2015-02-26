@@ -1,3 +1,4 @@
+// https://docs.google.com/spreadsheets/d/1qHBZ4_TLQ3LfakDHW3iGP1htQkaCu49R0DGs6fcXhDE/export?gid=0&format=csv
 window.addEventListener("load",function () {
 	var da=document.getElementById("droparea");
 	da.ondragover = function (e) {
