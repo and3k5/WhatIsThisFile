@@ -17,7 +17,7 @@ window.addEventListener("load",function () {
 			console.log("Loaded file");
 			var reader = new FileReader();
 			reader.onload = function (event) {
-				IdentifyFile(event.target.result);
+				da.appendChild(document.createElement("p")).textContent=IdentifyFile(event.target.result).name;
 			}
 			reader.readAsArrayBuffer(file);
 		} else {
@@ -55,6 +55,14 @@ window.addEventListener("load",function () {
 		return {name:name};
 	}
 	
+	function splitStr(str) {
+		var rtn=[];
+		for (var i = 0,stop=str.length;i<stop;i+=2) {
+			rtn.push(parseInt(str[i]+str[i+1],16));
+		}
+		return new Uint8Array(rtn);
+	}
+	
 	function IdentifyFile(arrayBuffer) {
 		var array=FILETYPES;
 		var ui8 = new Uint8Array(arrayBuffer);
@@ -63,9 +71,24 @@ window.addEventListener("load",function () {
 			console.log(obj);
 			var array2=array[i].querySelectorAll("data")[0].querySelectorAll("byte");
 			for (var j=0,len2=array2.length;j<len2;j++) {
-				console.log(array2[j]);
+				//console.log(array2[j]);
+				var pos = parseInt(array2[j].querySelector("pos").textContent,10);
+				var value = splitStr(array2[j].querySelector("value").textContent);
+				//console.log(pos,value);
+				var right=true;
+				for (var k=0,len3=value.length;k<len3;k++) {
+					if (ui8[pos+k]!=value[k]) right=false;
+				}
+				if (right) {
+					var desc;
+					if ((desc=array2[j].querySelector("desc"))!=null) {
+						obj.name += "("+desc+")";
+					}
+					return obj;
+				}
 			}
 		}
+		return {name:"Unidentified file"};
 	}
 });
 
