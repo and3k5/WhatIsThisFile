@@ -82,7 +82,7 @@ window.addEventListener("load",function () {
 				if (right) {
 					var desc;
 					if ((desc=array2[j].querySelector("desc"))!=null) {
-						obj.name += "("+desc+")";
+						obj.name += " ("+desc.textContent+")";
 					}
 					return obj;
 				}
