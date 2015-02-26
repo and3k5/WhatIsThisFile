@@ -14,21 +14,19 @@ window.addEventListener("load",function () {
 		e.preventDefault();
 		var file = e.dataTransfer.files[0];
 		if (file != undefined) {
-			console.log("Loaded file");
 			var reader = new FileReader();
 			reader.onload = function (event) {
 				da.appendChild(document.createElement("p")).textContent=IdentifyFile(event.target.result).name;
 			}
 			reader.readAsArrayBuffer(file);
 		} else {
-			console.error("Failed");
+			console.error("Error: Could not get file!");
 		}
 		return false;
 	}
 	var http = new XMLHttpRequest(),FILETYPES;
 	http.open("GET","filetypes.xml",true)
 	http.onloadend = function (e) {
-		console.log("DOWNLOADED");
 		FILETYPES=this.responseXML.querySelectorAll("filetypes")[0].querySelectorAll("file");
 	};
 	http.send();
@@ -68,13 +66,10 @@ window.addEventListener("load",function () {
 		var ui8 = new Uint8Array(arrayBuffer);
 		for (var i=0,len=array.length;i<len;i++) {
 			var obj=FetchFileInfo(array[i]);
-			console.log(obj);
 			var array2=array[i].querySelectorAll("data")[0].querySelectorAll("byte");
 			for (var j=0,len2=array2.length;j<len2;j++) {
-				//console.log(array2[j]);
 				var pos = parseInt(array2[j].querySelector("pos").textContent,10);
 				var value = splitStr(array2[j].querySelector("value").textContent);
-				//console.log(pos,value);
 				var right=true;
 				for (var k=0,len3=value.length;k<len3;k++) {
 					if (ui8[pos+k]!=value[k]) right=false;
